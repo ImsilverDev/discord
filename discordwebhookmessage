@@ -1,0 +1,15 @@
+import requests
+import json
+
+# define the webhook url, message prompt
+webhook_url = "webhook"
+message = input("Enter a message to send to the webhook: ")
+
+# define the payload with message
+payload = {"content": message}
+
+# send payload using requests lib
+response = requests.post(webhook_url, data=json.dumps(payload), headers={"Content-Type": "application/json"})
+
+# print our success
+print(response.status_code)
