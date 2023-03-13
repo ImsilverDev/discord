@@ -1,3 +1,1 @@
-# discord
-some stuff
-latest: merged some old repos to this
+## my old repos merged into 1
