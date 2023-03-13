@@ -1,0 +1,18 @@
+@bot.command()
+async def guess(ctx):
+    await ctx.send("im thinking of a number between 1 to 15, guess which one it is")
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.isdigit()
+
+    answer = random.randint(1, 15)
+
+    try:
+        msg = await bot.wait_for('message', check=check, timeout=5.0)
+    except asyncio.TimeoutError:
+        return await ctx.send("you took too long, the number was: {}".format(answer))
+
+    if int(msg.content) == answer:
+        await ctx.send("correct, the number was {}".format(answer))
+    else:
+        await ctx.send("incorrect, the number was {}".format(answer))    
